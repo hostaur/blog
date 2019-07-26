@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Post} from '../post';
+import { PostService } from '../services/post.service';
 
 
 @Component({
@@ -10,8 +11,9 @@ import {Post} from '../post';
 
 export class PostComponent implements OnInit {
   @Input() post: Post;
+  @Input() index: number;
 
-  constructor() { }
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
   }
@@ -26,6 +28,14 @@ export class PostComponent implements OnInit {
 
  add  () {
     this.post.loveIts++;
+  }
+
+  onInitialize  () {
+    this.postService.reinitializeOne(this.index);
+  }
+
+  isInit(){
+    return this.post.loveIts==0;
   }
 
   substract () { this.post.loveIts--; }

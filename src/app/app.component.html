@@ -1,8 +1,10 @@
-<div style="text-align:center" >
-  <div   class="center-div">
-  <h1>Posts</h1>
+<div style="text-align:center">
+  <div class="center-div">
+    <h1>Posts</h1>
     <ul class="list-group">
-    <app-post  *ngFor="let p of posts"  [post]="p"></app-post>
-  </ul>
+      <app-post *ngFor="let p of posts; let i = index" [post]="p" [index]="i"></app-post>
+    </ul>
   </div>
+
+  <button class="btn btn-danger" [disabled]="!isAuth" (click)="onReinitialize()">Tout remettre à zéro</button>
 </div>

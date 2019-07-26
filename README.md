@@ -1,6 +1,10 @@
 # Blog
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+## installation
+npm install
+npm install @angular/cli --global
+npm install bootstrap@3.3.7 --save
 
 ## Development server
 
