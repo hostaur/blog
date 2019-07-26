@@ -1,6 +1,6 @@
 import { POSTS } from '../mock-posts';
 export class PostService {
-  posts = POSTS;;
+  posts = POSTS;
 
   reinitialize() {
     for (let post of this.posts) {
@@ -12,6 +12,15 @@ export class PostService {
   reinitializeOne(i:number) {
    this.posts[i].loveIts=0;
   }
+
+  getPostById(id: number) {
+    const post = this.posts.find(
+      (s) => {
+        return s.id === id;
+      }
+    );
+    return post;
+}
 
 }
 
