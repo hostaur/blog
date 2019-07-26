@@ -12,6 +12,8 @@ import { PostService } from '../services/post.service';
 export class PostComponent implements OnInit {
   @Input() post: Post;
   @Input() index: number;
+  @Input() id: number;
+
 
   constructor(private postService: PostService) { }
 

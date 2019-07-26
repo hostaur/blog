@@ -1,7 +1,7 @@
 <div class="center-div">
   <h1>Posts</h1>
   <ul class="list-group">
-    <app-post *ngFor="let p of posts; let i = index" [post]="p" [index]="i"></app-post>
+    <app-post *ngFor="let p of posts; let i = index" [post]="p" [index]="i" [id]="p.id"></app-post>
   </ul>
 </div>
 
