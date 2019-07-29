@@ -1,23 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PostService } from '../services/post.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-post-view',
   templateUrl: './post-view.component.html',
   styleUrls: ['./post-view.component.scss']
 })
-export class PostViewComponent implements OnInit {
+export class PostViewComponent implements OnInit,OnDestroy {
   posts: any[];
+  postSubscription : Subscription;
   isAuth = false;
   constructor(private postService: PostService) {
-    setTimeout(
-      () => {
-        this.isAuth = true;
-      }, 4000
-    );
   }
 
   ngOnInit() {
-    this.posts = this.postService.posts;
+    this.postSubscription = this.postService.postsSubject.subscribe(
+      (posts: any[]) => {
+        this.posts = posts;
+      }
+    );
+    this.postService.emitPostSubject();
   }
 
   onReinitialize() {
@@ -26,6 +28,10 @@ export class PostViewComponent implements OnInit {
     } else {
       return null;
     }
+  }
+
+  ngOnDestroy() {
+    this.postSubscription.unsubscribe();
   }
 
 }
