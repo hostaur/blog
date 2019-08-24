@@ -11,9 +11,11 @@ import { AuthService } from './services/auth.service';
 import { SinglePostComponent } from './single-post/single-post.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 const appRoutes: Routes = [
   { path: 'posts',canActivate:[AuthGuard], component: PostViewComponent },
+  { path: 'editPost',canActivate:[AuthGuard], component: EditPostComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'posts/:id',canActivate:[AuthGuard], component: SinglePostComponent },
   { path: '', component: PostViewComponent },
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
     AuthComponent,
     PostViewComponent,
     SinglePostComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,

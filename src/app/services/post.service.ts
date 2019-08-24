@@ -1,5 +1,6 @@
 import { POSTS } from '../mock-posts';
 import { Subject } from 'rxjs';
+import { Post } from '../post';
 
 export class PostService {
   postsSubject = new Subject<any[]>();
@@ -21,6 +22,16 @@ export class PostService {
   reinitializeOne(i:number) {
    this.posts[i].loveIts=0;
    this.emitPostSubject();
+  }
+
+  addPost(p:Post){
+    this.posts.push(p);
+    this.emitPostSubject();
+  }
+
+  deletePost(i:number){
+    this.posts.splice(i, 1);
+    this.emitPostSubject();
   }
 
   getPostById(id: number) {

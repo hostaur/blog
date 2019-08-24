@@ -9,9 +9,10 @@ import { Subscription } from 'rxjs';
 export class PostViewComponent implements OnInit,OnDestroy {
   posts: any[];
   postSubscription : Subscription;
-  isAuth = false;
   constructor(private postService: PostService) {
   }
+
+
 
   ngOnInit() {
     this.postSubscription = this.postService.postsSubject.subscribe(

@@ -36,6 +36,10 @@ export class PostComponent implements OnInit {
     this.postService.reinitializeOne(this.index);
   }
 
+  delete(){
+    this.postService.deletePost(this.index);
+  }
+
   isInit(){
     return this.post.loveIts==0;
   }

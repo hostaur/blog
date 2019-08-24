@@ -1,3 +1,13 @@
-<h2>{{ title }}</h2>
+<div class="row">
+    <div class="column">
+        <h2>{{p.title | uppercase}} </h2>
+    </div>
+    <div class="column">
+        <p class="dateCreate">{{ p.created_at | date: 'MM/dd/yyyy' }}</p>
+        <p class="content">{{p.content}}</p>
+    </div>
+</div>
 
-<a routerLink="/posts">Retour à la liste</a>
+<div>
+    <a routerLink="/posts">Retour à la liste</a>
+</div>
