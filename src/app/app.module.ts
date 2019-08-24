@@ -4,41 +4,34 @@ import { PostService } from './services/post.service';
 import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
 import {FormsModule} from '@angular/forms';
-import { AuthComponent } from './auth/auth.component';
 import { PostViewComponent } from './post-view/post-view.component';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthService } from './services/auth.service';
 import { SinglePostComponent } from './single-post/single-post.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
-import { AuthGuard } from './services/auth-guard.service';
-import { EditPostComponent } from './edit-post/edit-post.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 const appRoutes: Routes = [
-  { path: 'posts',canActivate:[AuthGuard], component: PostViewComponent },
-  { path: 'editPost',canActivate:[AuthGuard], component: EditPostComponent },
-  { path: 'auth', component: AuthComponent },
-  { path: 'posts/:id',canActivate:[AuthGuard], component: SinglePostComponent },
-  { path: '', component: PostViewComponent },
-  { path: 'not-found', component: FourOhFourComponent },
-  { path: '**', redirectTo: 'not-found' }
+  { path: 'posts', component: PostViewComponent },
+  { path: 'newPost', component: NewPostComponent },
+  { path: 'posts/:id', component: SinglePostComponent },
+  { path: '**', redirectTo: 'posts'}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
-    AuthComponent,
     PostViewComponent,
     SinglePostComponent,
     FourOhFourComponent,
-    EditPostComponent
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
     FormsModule, 
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [PostService,AuthService,AuthGuard],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 

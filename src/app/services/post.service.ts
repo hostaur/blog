@@ -25,6 +25,9 @@ export class PostService {
   }
 
   addPost(p:Post){
+    p.id =  this.posts[( this.posts.length - 1)].id + 1;
+    p.created_at= new Date;
+    p.loveIts=0;
     this.posts.push(p);
     this.emitPostSubject();
   }
